@@ -61,7 +61,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a self hosted n8n instance for internal use. Detailed documentation can be found [here](https://docs.n8n.io/). This project was created according to the [Server Setup](https://docs.n8n.io/getting-started/installation/advanced/server-setup.html#docker-compose-example) documentation section.
+This is a pre-configured `Netdata Agent` by Pharm-IT for monitoring use. Despite the pre-configured example from `netdata.cloud` it uses a custom network `netdata`. This docker network will be created by the `docker-compose.yml` file. In the standard cloud-init script the `netdata` network will be allowed to communicate with the host system by the ufw firewall settings (https://askubuntu.com/a/903358).
+
+These settings are necessary to send, for example, metrics of the `Docker Engine` via the [metrics endpoint](https://docs.docker.com/config/daemon/prometheus/).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
