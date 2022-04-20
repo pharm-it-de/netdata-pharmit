@@ -18,9 +18,9 @@ services:
     security_opt:
       - apparmor:unconfined
     volumes:
-      - netdataconfig:/etc/netdata
-      - netdatalib:/var/lib/netdata
-      - netdatacache:/var/cache/netdata
+      - ./netdataconfig:/etc/netdata
+      - ./netdatalib:/var/lib/netdata
+      - ./netdatacache:/var/cache/netdata
       - /etc/passwd:/host/etc/passwd:ro
       - /etc/group:/host/etc/group:ro
       - /proc:/host/proc:ro
@@ -30,11 +30,6 @@ services:
       - NETDATA_CLAIM_TOKEN=${NETDATA_CLAIM_TOKEN:?Variable not set}
       - NETDATA_CLAIM_URL=${NETDATA_CLAIM_URL:?Variable not set}
       - NETDATA_CLAIM_ROOMS=${NETDATA_CLAIM_ROOMS:?Variable not set}
-
-volumes:
-  netdataconfig:
-  netdatalib:
-  netdatacache:
 
 networks:
   netdata_bridge:
