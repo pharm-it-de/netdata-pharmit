@@ -10,7 +10,7 @@ services:
       - 19999:19999
     restart: unless-stopped
     networks:
-      - netdata
+      - netdata_bridge
     extra_hosts:
       - "host.docker.internal:host-gateway"
     cap_add:
@@ -37,7 +37,7 @@ volumes:
   netdatacache:
 
 networks:
-  netdata:
+  netdata_bridge:
     driver: bridge
     driver_opts:
       com.docker.network.bridge.name: netdata-bridge
