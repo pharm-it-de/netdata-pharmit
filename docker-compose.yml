@@ -7,7 +7,7 @@ services:
     container_name: netdata
     hostname: ${NETDATA_HOSTNAME:?Variable not set}
     ports:
-      - 19999:19999
+      - "127.0.0.1:19999:19999"
     restart: unless-stopped
     networks:
       - netdata_bridge
