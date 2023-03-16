@@ -29,7 +29,7 @@ services:
     environment:
       - NETDATA_CLAIM_TOKEN=${NETDATA_CLAIM_TOKEN:?Variable not set}
       - NETDATA_CLAIM_URL=${NETDATA_CLAIM_URL:?Variable not set}
-      - NETDATA_CLAIM_ROOMS=${NETDATA_CLAIM_ROOMS:?Variable not set}
+      - NETDATA_CLAIM_ROOMS=${NETDATA_CLAIM_ROOMS}
 
 volumes:
   netdataconfig:
