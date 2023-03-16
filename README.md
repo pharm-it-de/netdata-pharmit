@@ -100,8 +100,8 @@ Because the project is dockerized, you can run the following command to start th
     # login to netdata.cloud and get token from "Connect Nodes" > "Docker" > "NETDATA_CLAIM_URL"
     NETDATA_CLAIM_URL=https://app.netdata.cloud
     
-    # login to netdata.cloud and get token from "Connect Nodes" > "Docker" > "NETDATA_CLAIM_TOKEN"
-    NETDATA_CLAIM_ROOMS=<UUID of the room>
+    # optional: login to netdata.cloud and get token from "Connect Nodes" > "Docker" > "NETDATA_CLAIM_ROOMS"
+    # NETDATA_CLAIM_ROOMS=<UUID of the room>
    ```
 4. Run the docker containers
    ```sh
