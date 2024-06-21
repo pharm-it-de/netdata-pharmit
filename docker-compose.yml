@@ -3,18 +3,18 @@ version: '3'
 services:
   # taken from netdata.cloud default config in "Connect Nodes"
   netdata:
-    image: netdata/netdata
+    image: netdata/netdata:stable
     container_name: netdata
     hostname: ${NETDATA_HOSTNAME:?Variable not set}
     ports:
       - "127.0.0.1:19999:19999"
     restart: unless-stopped
-    networks:
-      - netdata_bridge
+    network_mode: host
     extra_hosts:
       - "host.docker.internal:host-gateway"
     cap_add:
       - SYS_PTRACE
+      - SYS_ADMIN
     security_opt:
       - apparmor:unconfined
     volumes:
@@ -23,9 +23,12 @@ services:
       - netdatacache:/var/cache/netdata
       - /etc/passwd:/host/etc/passwd:ro
       - /etc/group:/host/etc/group:ro
+      - /etc/localtime:/etc/localtime:ro
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /etc/os-release:/host/etc/os-release:ro
+      - /var/log:/host/var/log:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       - NETDATA_CLAIM_TOKEN=${NETDATA_CLAIM_TOKEN:?Variable not set}
       - NETDATA_CLAIM_URL=${NETDATA_CLAIM_URL:?Variable not set}
@@ -35,10 +38,3 @@ volumes:
   netdataconfig:
   netdatalib:
   netdatacache:
-
-networks:
-  netdata_bridge:
-    name: netdata_bridge
-    driver: bridge
-    driver_opts:
-      com.docker.network.bridge.name: netdata-bridge
