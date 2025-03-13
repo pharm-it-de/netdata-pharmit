@@ -7,7 +7,8 @@ services:
     ports:
       - "127.0.0.1:19999:19999"
     restart: unless-stopped
-    network_mode: host
+    networks:
+      - netdata_bridge
     extra_hosts:
       - "host.docker.internal:host-gateway"
     cap_add:
