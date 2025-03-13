@@ -36,3 +36,10 @@ volumes:
   netdataconfig:
   netdatalib:
   netdatacache:
+
+networks:
+  netdata_bridge:
+    name: netdata_bridge
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: netdata-bridge
